@@ -4,19 +4,30 @@ var tableData = data;
 // YOUR CODE HERE!
 
 //Reference to filter table button 
-var search_btn = d3.select("#filter-btn");
-search_btn.on("click", handleClick); //event listener when the "Filter Table" button is clicked
+var search_btn = document.getElementById("filter-btn").addEventListener("click",function(event){
+        event.preventDefault();
+        handleClick();
+        console.log("Button event worked");
+});
+
+//search_btn.on("click", handleClick); //event listener when the "Filter Table" button is clicked
 
 //Reference to the input area
-var input_area = d3.select("#datetime");
-//input_area.on("change",handleInput); //event listener when the user inputs a datetime value
+var input_area = document.getElementById("datetime")
+
+ //event listener when the user inputs a datetime value
 
 //Reference to the table body
-var tbl_body = d3.select("tbody");
+var tbl_body = document.getElementsByTagName("tbody");
+
+
+
 //Loads the table body with data of each UFO sightings
 tableCreate(tableData);
+//search_btn.on("click", handleClick);
+//input_area.on("change",handleInput);
 
-search_btn.on("click", handleClick); 
+//search_btn.on("click", handleClick); 
 
 var drop_dates = [];
 var drop_City = [];
@@ -41,20 +52,15 @@ drop_Duration = myDur.filter(onlyUnique);
 
 //populateDropDwn(drop_dates);
 
-document.getElementsByTagName
+
 
 function handleClick()
 {   //do not refresh the page
-    d3.event.preventDefault();
-    //console.log("The Filter Table button was clicked");
-    handleInput;
- 
-}
+    console.log("The Filter Table button was clicked");
+    console.log("Handle click was handle correctly");
+    console.log(input_area);
+    user_input = input_area.value;
 
-function handleInput()
-{
-    //d3.event.target;
-    user_input = input_area.property("value");
     if(user_input == "")
     {
         window.alert("Please enter an date time")
@@ -67,6 +73,8 @@ function handleInput()
   
 }
 
+
+
 function filterData(dt_value)
 {
     var filteredData = tableData.filter(ufo =>ufo.datetime === dt_value);
@@ -76,10 +84,6 @@ function filterData(dt_value)
 }
 
 
-//function getUnique(tableData)
-//{
-//    for (var i = 0; i<tableData.length; i++)
-//}
 
 
 function onlyUnique(value, index, self) 
@@ -88,13 +92,13 @@ function onlyUnique(value, index, self)
 }
 
 function tableCreate(data) {
+    var tbl = document.getElementById('ufo-table') 
+    for(var t = tbl.rows.length-1; t>0; t--)
+    {
+        tbl.deleteRow(t);
+    }
 
-    //var ufoheader = ["Date","City","State","Country", "Shape", "Duration","Comment"];
-
-    var tbl = document.getElementById('ufo-table')
-    
     //var tbl = document.createElement('table');
-
     for (var i = 0; i < data.length; i++) {
     
         var tr = document.createElement('tr'); 
