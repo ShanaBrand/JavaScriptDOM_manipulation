@@ -47,11 +47,21 @@
             </div>
           </aside>
         </div>
+     
+    
+          <input class='fltbutton' type="button" id="btnGenerate" value="DATE"/>
+          <input class='fltbutton' type="button" id="btnGenerate" value="CITY" onclick="populateDropDwn"/>
+          <input class='fltbutton' type="button" id="btnGenerate" value="STATE" onclick="populateDropDwn()"/>
+          <input class='fltbutton' type="button" id="btnGenerate" value="COUNTRY" onclick="populateDropDwn()"/>
+          <input class='fltbutton' type="button" id="btnGenerate" value="SHAPE" onclick="populateDropDwn()"/>
+          <input class='fltbutton' type="button" id="btnGenerate" value="DURATION" onclick="populateDropDwn()"/>
+          <input class='fltbutton' type="button" id="btnGenerate" value="COMMENTS" onclick="populateDropDwn()"/>
+         
         <div class="col-md-10">
           <div id="table-area" class="">
             <table id="ufo-table" class="table table-striped">
               <thead>
-                <tr>
+                <tr class ="tbl_headings">
                   <th class="table-head">Date</th>
                   <th class="table-head">City</th>
                   <th class="table-head">State</th>
